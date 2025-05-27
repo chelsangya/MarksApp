@@ -45,11 +45,8 @@ public class LoginController {
                 if(user==null){
                     JOptionPane.showMessageDialog(view,"Login failed");
                 } else{
-                    DashboardView dashboardView = new DashboardView();
-                    DashboardController dashboardController = new DashboardController(dashboardView,user);
-                    dashboardController.open();
-                    close();
-                    
+                    JOptionPane.showMessageDialog(view,"Logged in successfully");
+
                 }
             }
         }

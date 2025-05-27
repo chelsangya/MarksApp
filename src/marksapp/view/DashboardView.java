@@ -92,8 +92,5 @@ public class DashboardView extends javax.swing.JFrame {
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JLabel getWelcomeLabel(){
-        return welcomeLabel;
-    }
 
 }
