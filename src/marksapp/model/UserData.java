@@ -11,16 +11,30 @@ package marksapp.model;
 public class UserData {
       // private attributes
 //    public methods
+    private String id;
     private String name;
     private String email;
     private String password;
+   
 //    public constructor
     public UserData(String name, String email, String password){
         this.name=name;
         this.email=email;
         this.password=password;
     }
+    public UserData(String id,String name, String email, String password){
+        this.id=id;
+        this.name=name;
+        this.email=email;
+        this.password=password;
+    }
+    
+  
 //    setters
+    public void setId(String id){
+        this.id=id;
+    }
+    
     public void setName(String name){
         this.name= name;
     }
@@ -31,6 +45,9 @@ public class UserData {
         this.password=password;
     }
 //    getters
+    public String getId(){
+        return this.id;
+    }
     public String getName(){
         return this.name;
     }
