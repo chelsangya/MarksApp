@@ -7,6 +7,7 @@ package marksapp.dao;
 import marksapp.database.MySqlConnection;
 import marksapp.model.UserData;
 import java.sql.*;
+import marksapp.model.LoginRequest;
 /**
  *
  * @author sangyakoirala
@@ -30,4 +31,50 @@ public class UserDao {
           mySql.closeConnection(conn);
       }
     }
+    
+    public UserData login(LoginRequest loginReq){
+        String query="SELECT * FROM users WHERE email=? and fpassword=?";
+        Connection conn = mySql.openConnection();
+        try{
+            PreparedStatement stmnt = conn.prepareStatement(query);
+            stmnt.setString(1,loginReq.getEmail());
+            stmnt.setString(2,loginReq.getPassword());
+            ResultSet result= stmnt.executeQuery();
+            if (result.next()){
+                String email= result.getString("email");
+                String name = result.getString("fname");
+                String password = result.getString("fpassword");
+                String id = result.getString("id");
+                UserData user = new UserData(id,name,email,password);
+                return user;
+            } else {
+                return null;
+            }
+        } catch (Exception e){
+            return null;
+        } finally{
+            mySql.closeConnection(conn);
+        }
+    }
+    
+    public boolean checkEmail(String email){
+        String query="SELECT * FROM users where email=?";
+        Connection conn = mySql.openConnection();
+        try{
+            PreparedStatement stmnt = conn.prepareStatement(query);
+            stmnt.setString(1,email);
+            ResultSet result= stmnt.executeQuery();
+//            return result.next();
+            if(result.next()){
+                return true;
+            } else{
+                return false;
+            }
+        } catch(Exception e){
+            return false;
+        } finally {
+            mySql.closeConnection(conn);
+        }
+    }
+    
 }

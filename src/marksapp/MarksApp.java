@@ -4,7 +4,6 @@
  */
 package marksapp;
 import marksapp.controller.RegisterController;
-import marksapp.view.LoginView;
 import marksapp.view.RegisterView;
 
 /**
