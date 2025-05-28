@@ -22,7 +22,9 @@ public class LoginController {
     public LoginController(LoginView view){
         this.view=view;
         LoginUser loginUser = new LoginUser();
-        this.view.loginUser(loginUser);
+        this.view.loginUser(loginUser);        
+//        this.view.loginUser(new LoginUser());
+
     }
     public void open(){
         view.setVisible(true);
@@ -45,8 +47,11 @@ public class LoginController {
                 if(user==null){
                     JOptionPane.showMessageDialog(view,"Login failed");
                 } else{
-                    JOptionPane.showMessageDialog(view,"Logged in successfully");
-
+                    DashboardView dashboardView = new DashboardView();
+                    DashboardController dashboardController = 
+                            new DashboardController(dashboardView,user);
+                    dashboardController.open();
+                    close();
                 }
             }
         }
