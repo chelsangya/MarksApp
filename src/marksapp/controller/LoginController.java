@@ -6,9 +6,13 @@ package marksapp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import marksapp.controller.mail.SMTPSMailSender;
 import marksapp.dao.UserDao;
 import marksapp.model.LoginRequest;
+import marksapp.model.ResetPasswordRequest;
 import marksapp.model.UserData;
 import marksapp.view.DashboardView;
 import marksapp.view.LoginView;
@@ -23,6 +27,8 @@ public class LoginController {
         this.view=view;
         LoginUser loginUser = new LoginUser();
         this.view.loginUser(loginUser);
+        ResetPassword resetPass= new ResetPassword();
+        this.view.forgotPassword(resetPass);
     }
     public void open(){
         view.setVisible(true);
@@ -52,6 +58,71 @@ public class LoginController {
                     
                 }
             }
+        }
+        
+    }
+    
+    class ResetPassword implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            String email = JOptionPane.showInputDialog(view,"Enter your email");
+            if(email.isEmpty()){
+                JOptionPane.showMessageDialog(view, "Email cannot be empty");
+            } else {
+                UserDao userDao = new UserDao();
+                boolean emailExists = userDao.checkEmail(email);
+                if (!emailExists){
+                    JOptionPane.showMessageDialog(view, "Email does not exist");
+                } else {
+                    String otp = "987586";
+//                    SMTPSMailSender smtpSender= new SMTPSMailSender();
+                    String title="Reset Password Verification";
+                    String body="The otp to reset your password is "+otp;
+                    boolean mailSent= SMTPSMailSender.sendMail(email,title,body);
+                    if (!mailSent){
+                        JOptionPane.showMessageDialog(view, "Failed to send OTP. Try again later.");
+                    } else {
+                        String otpReceived = JOptionPane.showInputDialog(view,"Enter your otp code");
+                        if(!otp.equals(otpReceived)){
+                            JOptionPane.showMessageDialog(view, "Otp did not match");
+                            
+                        } else {
+                            String password = JOptionPane.showInputDialog(view,"Enter your new password");
+                            if (password.trim().isEmpty()){
+                                JOptionPane.showMessageDialog(view, "Password cannot be empty");
+                            } else {
+                                ResetPasswordRequest resetReq = new ResetPasswordRequest(email,password);
+                                boolean updateResult = userDao.resetPassword(resetReq);
+                                if(!updateResult){
+                                 JOptionPane.showMessageDialog(view,"Failed to reset password");
+                                } else {
+                                    JOptionPane.showMessageDialog(view, "Password has been changed");
+                                }
+                                
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
         }
         
     }
