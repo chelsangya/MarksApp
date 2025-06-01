@@ -8,6 +8,7 @@ import marksapp.database.MySqlConnection;
 import marksapp.model.UserData;
 import java.sql.*;
 import marksapp.model.LoginRequest;
+import marksapp.model.ResetPasswordRequest;
 /**
  *
  * @author sangyakoirala
@@ -57,6 +58,41 @@ public class UserDao {
         }
     }
     
+    public boolean checkEmail(String email){
+        String query = "SELECT * FROM users WHERE email=?";
+        Connection conn= mySql.openConnection();
+        try{
+            PreparedStatement stmnt = conn.prepareStatement(query);
+            stmnt.setString(1,email);
+            ResultSet result = stmnt.executeQuery();
+//            return result.next();
+            if (result.next()){
+                return true;
+            } else{
+                return false;
+            }
+        } catch (Exception e){
+            return false;
+        } finally{
+            mySql.closeConnection(conn);
+        }
+    }
+    
+    public boolean resetPassword(ResetPasswordRequest reset){
+        String query = "UPDATE users SET fpassword=? WHERE email=?";
+        Connection conn= mySql.openConnection();
+        try{
+            PreparedStatement stmnt =conn.prepareStatement(query);
+            stmnt.setString(1,reset.getPassword());
+            stmnt.setString(2,reset.getEmail());
+            int result = stmnt.executeUpdate();
+            return result>0;
+        } catch (Exception e){
+            return false;
+        } finally{
+            mySql.closeConnection(conn);
+        }
+    }
     
     
 }
