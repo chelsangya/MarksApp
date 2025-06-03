@@ -9,41 +9,44 @@ package marksapp.model;
  * @author sangyakoirala
  */
 public class MarksData {
-    private String id;
-    private String userId;
+    private int id;
+    private int userId;
     private String name;
     private int databaseMarks;
     private int oopMarks;
     private int businessMarks;
     private int projectMarks;
-     public MarksData( String userId,String name,int databaseMarks,int oopMarks,int projectMarks,int businessMarks){
+     public MarksData( int userId,String name,int databaseMarks,int oopMarks,int projectMarks,int businessMarks){
+        this.userId=userId;
+        this.name=name;
         this.businessMarks=businessMarks;
         this.databaseMarks=databaseMarks;
         this.oopMarks=oopMarks;
         this.projectMarks=projectMarks;
     }
     
-    public MarksData(String userId,String id, String name,int databaseMarks,int oopMarks,int projectMarks,int businessMarks){
+    public MarksData(int userId,int id, String name,int databaseMarks,int oopMarks,int projectMarks,int businessMarks){
         this.userId=userId;
         this.id=id;
+        this.name=name;
         this.businessMarks=businessMarks;
         this.databaseMarks=databaseMarks;
         this.oopMarks=oopMarks;
         this.projectMarks=projectMarks;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
