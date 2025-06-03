@@ -16,6 +16,7 @@ import marksapp.model.ResetPasswordRequest;
 import marksapp.model.UserData;
 import marksapp.view.DashboardView;
 import marksapp.view.LoginView;
+import marksapp.view.RegisterView;
 
 /**
  *
@@ -104,6 +105,34 @@ public class LoginController {
                     }
                 }
             }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+        
+    }
+    
+    class RegisterNavigation implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            RegisterView registerView = new RegisterView();
+            RegisterController registerController = new RegisterController(registerView);
+            registerController.open();
+            close();
         }
 
         @Override

@@ -15,9 +15,24 @@ import marksapp.model.ResetPasswordRequest;
  */
 public class UserDao {
     MySqlConnection mySql = new MySqlConnection();
+    
     public boolean register(UserData user){
-      String query="INSERT INTO users(fname,email,fpassword) VALUES(?,?,?)";  
-      Connection conn = mySql.openConnection();
+        Connection conn = mySql.openConnection();
+           String createTableSQL = "CREATE TABLE IF NOT EXISTS demoUsers ("
+            + "id INT AUTO_INCREMENT PRIMARY KEY, "               
+            + "name VARCHAR(50) NOT NULL, "
+            + "email VARCHAR(100) UNIQUE NOT NULL, "
+            + "password VARCHAR(255) NOT NULL "
+            + ")";
+        try {
+            PreparedStatement createtbl= conn.prepareStatement(createTableSQL);
+            createtbl.executeUpdate();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(UserDao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+      String query="INSERT INTO demoUsers(name,email,password) VALUES(?,?,?)";  
+      
       try{
           PreparedStatement stmnt = conn.prepareStatement(query);
           stmnt.setString(1, user.getName());
@@ -26,7 +41,7 @@ public class UserDao {
           int result = stmnt.executeUpdate();
           boolean value= result>0;
           return value;
-      } catch(Exception e){
+      } catch(SQLException e){
           return false;
       } finally{
           mySql.closeConnection(conn);
@@ -34,7 +49,7 @@ public class UserDao {
     }
     
     public UserData login(LoginRequest loginReq){
-        String query="SELECT * FROM users WHERE email=? and fpassword=?";
+        String query="SELECT * FROM demoUsers WHERE email=? and password=?";
         Connection conn = mySql.openConnection();
         try{
             PreparedStatement stmnt = conn.prepareStatement(query);
@@ -43,9 +58,9 @@ public class UserDao {
             ResultSet result= stmnt.executeQuery();
             if (result.next()){
                 String email= result.getString("email");
-                String name = result.getString("fname");
-                String password = result.getString("fpassword");
-                String id = result.getString("id");
+                String name = result.getString("name");
+                String password = result.getString("password");
+                int id = result.getInt("id");
                 UserData user = new UserData(id,name,email,password);
                 return user;
             } else {
@@ -59,7 +74,7 @@ public class UserDao {
     }
     
     public boolean checkEmail(String email){
-        String query = "SELECT * FROM users WHERE email=?";
+        String query = "SELECT * FROM demoUsers WHERE email=?";
         Connection conn= mySql.openConnection();
         try{
             PreparedStatement stmnt = conn.prepareStatement(query);
@@ -79,7 +94,7 @@ public class UserDao {
     }
     
     public boolean resetPassword(ResetPasswordRequest reset){
-        String query = "UPDATE users SET fpassword=? WHERE email=?";
+        String query = "UPDATE demoUsers SET password=? WHERE email=?";
         Connection conn= mySql.openConnection();
         try{
             PreparedStatement stmnt =conn.prepareStatement(query);

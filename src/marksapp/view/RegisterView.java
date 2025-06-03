@@ -5,6 +5,7 @@
 package marksapp.view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 /**
  *
@@ -38,6 +39,7 @@ public class RegisterView extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         confirmPasswordField = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
+        loginLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(250, 250, 0, 0));
@@ -54,12 +56,16 @@ public class RegisterView extends javax.swing.JFrame {
 
         jLabel5.setText("Enter your details to register");
 
+        loginLabel.setForeground(new java.awt.Color(51, 51, 255));
+        loginLabel.setText("Login");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(loginLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(220, 220, 220))
@@ -106,7 +112,9 @@ public class RegisterView extends javax.swing.JFrame {
                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(registerButton)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginLabel)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,6 +163,7 @@ public class RegisterView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel loginLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JButton registerButton;
@@ -179,6 +188,9 @@ public class RegisterView extends javax.swing.JFrame {
 //    to add action listener to the button
     public void registerUser(ActionListener listener){
         registerButton.addActionListener(listener);
+    }
+    public void loginNav(MouseListener listener){
+        loginLabel.addMouseListener(listener);
     }
    
 }

@@ -35,7 +35,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         forgotPasswordLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        registerLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +48,8 @@ public class LoginView extends javax.swing.JFrame {
         forgotPasswordLabel.setForeground(new java.awt.Color(0, 102, 255));
         forgotPasswordLabel.setText("Forgot Password");
 
-        jLabel4.setText("Enter your credentials");
+        registerLabel.setForeground(new java.awt.Color(51, 51, 255));
+        registerLabel.setText("Register");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,26 +58,23 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(registerLabel)
                     .addComponent(forgotPasswordLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(emailTextField)
-                                .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                                .addComponent(passwordField)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(emailTextField)
+                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                            .addComponent(passwordField))))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addGap(138, 138, 138)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -88,7 +86,9 @@ public class LoginView extends javax.swing.JFrame {
                 .addComponent(forgotPasswordLabel)
                 .addGap(21, 21, 21)
                 .addComponent(loginButton)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(registerLabel)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,9 +137,9 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel forgotPasswordLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel registerLabel;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JTextField getEmailTextField(){
@@ -153,5 +153,8 @@ public class LoginView extends javax.swing.JFrame {
     }
     public void forgotPassword(MouseListener listener){
         forgotPasswordLabel.addMouseListener(listener);
+    }
+    public void registerNav(MouseListener listener){
+        registerLabel.addMouseListener(listener);
     }
 }

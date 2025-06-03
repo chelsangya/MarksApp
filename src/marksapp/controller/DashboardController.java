@@ -59,13 +59,21 @@ public class DashboardController {
                 int projectMarks = Integer.parseInt(projectMarksStr.trim());
                 int businessMarks = Integer.parseInt(businessMarksStr.trim());                
                 int oopMarks = Integer.parseInt(oopMarksStr.trim());
-                MarksData marks= new MarksData(user.getId(),name,databaseMarks,oopMarks,projectMarks,businessMarks);
+                int uid=user.getId();
+
+                MarksData marks= new MarksData(uid,name,databaseMarks,oopMarks,projectMarks,businessMarks);
                 boolean marksAdded= marksDao.addMarks(marks);
                 if(!marksAdded){
                     JOptionPane.showMessageDialog(view,"Failed to insert marks");
                     
+                    
                 } else{
                     JOptionPane.showMessageDialog(view,"Marks added");
+                    view.getStudentNameTextField().setText("");
+                    view.getProjectMarksTextField().setText("");
+                    view.getDatabaseMarksTextField().setText("");
+                    view.getOopMarksTextField().setText("");
+                    view.getBusinessMarksTextField().setText("");
                 }
             }
             

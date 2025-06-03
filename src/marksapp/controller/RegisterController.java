@@ -6,6 +6,8 @@ package marksapp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import marksapp.dao.UserDao;
 import marksapp.model.UserData;
@@ -22,6 +24,7 @@ public class RegisterController {
         this.view=view;
         RegisterUser register= new RegisterUser();
         this.view.registerUser(register);
+        this.view.loginNav(new LoginNavigation());
     }
     public void open(){
         this.view.setVisible(true);
@@ -61,6 +64,34 @@ public class RegisterController {
                 
                 
             
+        }
+        
+    }
+
+    class LoginNavigation implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            LoginView loginView = new LoginView();
+            LoginController loginController = new LoginController(loginView);
+            loginController.open();
+            close();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
         }
         
     }
