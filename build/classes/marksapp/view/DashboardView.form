@@ -94,7 +94,7 @@
                                           <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="logOutButton" min="-2" pref="102" max="-2" attributes="0"/>
+                                              <Component id="logoutButton" min="-2" pref="102" max="-2" attributes="0"/>
                                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -156,7 +156,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="viewButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="logOutButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
@@ -256,7 +256,7 @@
             <Property name="text" type="java.lang.String" value="View Marks"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="logOutButton">
+        <Component class="javax.swing.JButton" name="logoutButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="33" red="ff" type="rgb"/>
@@ -267,7 +267,7 @@
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logOutButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

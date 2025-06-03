@@ -11,6 +11,8 @@ import marksapp.dao.MarksDao;
 import marksapp.model.MarksData;
 import marksapp.model.UserData;
 import marksapp.view.DashboardView;
+import marksapp.view.LoginView;
+import marksapp.view.ViewMarks;
 
 /**
  *
@@ -26,6 +28,8 @@ public class DashboardController {
         String name = user.getName();
         this.view.getWelcomeLabel().setText("Welcome "+ name);
         this.view.addMarks(new AddMarks());
+        this.view.viewMarksNavigation(new ViewMarksNavigation());
+        this.view.logout(new LogoutUser());
     }
     public void open(){
         view.setVisible(true);
@@ -84,6 +88,38 @@ public class DashboardController {
                 return mark >= 0 && mark <= 100;
             } catch (NumberFormatException e) {
                 return false;
+            }
+        }
+        
+    }
+    class ViewMarksNavigation implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+                ViewMarks marksView = new ViewMarks();
+                ViewMarksController marksController = new ViewMarksController(marksView,user);
+                marksController.open();
+                close();
+        }
+        
+    }
+    class LogoutUser implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int confirm = JOptionPane.showConfirmDialog(
+                    view,
+                    "Are you sure you want to log out?",
+                    "Logout Confirmation",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirm == JOptionPane.YES_OPTION) {            
+            LoginView loginView = new LoginView();
+            LoginController loginController = new LoginController(loginView);
+            loginController.open();
+            close();
             }
         }
         

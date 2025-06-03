@@ -46,7 +46,7 @@ public class DashboardView extends javax.swing.JFrame {
         addMarksButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         viewButton = new javax.swing.JButton();
-        logOutButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,12 +89,12 @@ public class DashboardView extends javax.swing.JFrame {
         viewButton.setForeground(new java.awt.Color(255, 255, 255));
         viewButton.setText("View Marks");
 
-        logOutButton.setBackground(new java.awt.Color(255, 51, 102));
-        logOutButton.setForeground(new java.awt.Color(255, 255, 255));
-        logOutButton.setText("Logout");
-        logOutButton.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.setBackground(new java.awt.Color(255, 51, 102));
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -126,7 +126,7 @@ public class DashboardView extends javax.swing.JFrame {
                                         .addComponent(jLabel5)
                                         .addComponent(jLabel3)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(logOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel6)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,7 +172,7 @@ public class DashboardView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewButton)
-                    .addComponent(logOutButton))
+                    .addComponent(logoutButton))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -207,9 +207,9 @@ public class DashboardView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addMarksButtonActionPerformed
 
-    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_logOutButtonActionPerformed
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,7 +261,7 @@ public class DashboardView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton logOutButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField oopMarksTextField;
     private javax.swing.JTextField projectMarksTextField;
     private javax.swing.JTextField studentNameTextField;
@@ -290,5 +290,11 @@ public class DashboardView extends javax.swing.JFrame {
     }
     public void addMarks(ActionListener listener){
         addMarksButton.addActionListener(listener);
+    }
+    public void viewMarksNavigation(ActionListener listener){
+        viewButton.addActionListener(listener);
+    }
+    public void logout(ActionListener listener){
+        logoutButton.addActionListener(listener);
     }
 }

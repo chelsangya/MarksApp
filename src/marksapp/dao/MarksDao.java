@@ -59,6 +59,33 @@ public class MarksDao {
         
     }
     
+//    fetch all marks 
+    public ArrayList<MarksData> getMarksForUid(int uid){
+        Connection conn= mySql.openConnection();
+        String query= "SELECT * FROM marks WHERE uid=?";
+        ArrayList<MarksData> marksList = new ArrayList<>();
+        try{
+            PreparedStatement stmnt= conn.prepareStatement(query);
+            stmnt.setInt(1,uid);
+            ResultSet result = stmnt.executeQuery();
+            while(result.next()){
+            String name = result.getString("name");
+            int id= result.getInt("id");
+            int databaseMarks = result.getInt("databaseMarks");
+            int oopMarks = result.getInt("oopMarks");
+            int projectMarks = result.getInt("projectMarks");
+            int businessMarks = result.getInt("businessMarks");
 
+            MarksData marks = new MarksData(uid,id, name, databaseMarks, oopMarks, projectMarks, businessMarks);
+            marksList.add(marks);
+            }
+            return marksList;
+        } catch(SQLException e){
+            return null;
+        } finally {
+            mySql.closeConnection(conn);
+        }
+        
+    }
 
 }
