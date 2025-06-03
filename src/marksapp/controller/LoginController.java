@@ -31,6 +31,7 @@ public class LoginController {
         LoginUser loginUser = new LoginUser();
         this.view.loginUser(loginUser); 
         this.view.forgotPassword(new ResetPassword());
+        this.view.registerNav(new RegisterNavigation());
 //        this.view.loginUser(new LoginUser());
 
     }
