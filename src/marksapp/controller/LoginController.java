@@ -14,6 +14,7 @@ import marksapp.dao.UserDao;
 import marksapp.model.LoginRequest;
 import marksapp.model.ResetPasswordRequest;
 import marksapp.model.UserData;
+import marksapp.view.DashboardTabbedView;
 import marksapp.view.DashboardView;
 import marksapp.view.LoginView;
 import marksapp.view.RegisterView;
@@ -56,9 +57,9 @@ public class LoginController {
                 if(user==null){
                     JOptionPane.showMessageDialog(view,"Login failed");
                 } else{
-                    DashboardView dashboardView = new DashboardView();
-                    DashboardController dashboardController = 
-                            new DashboardController(dashboardView,user);
+                    DashboardTabbedView dashboardView = new DashboardTabbedView();
+                    DashboardTabbedController dashboardController = 
+                            new DashboardTabbedController(dashboardView,user);
                     dashboardController.open();
                     close();
                 }
