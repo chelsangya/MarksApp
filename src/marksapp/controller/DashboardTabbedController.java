@@ -103,7 +103,6 @@ public class DashboardTabbedController {
         @Override
         public void stateChanged(ChangeEvent e) {
             int tab= tabbedPane.getSelectedIndex();
-            System.out.println(tabbedPane.getSelectedIndex());
             if (tab==1){
                 loadUserMarks();
             }
