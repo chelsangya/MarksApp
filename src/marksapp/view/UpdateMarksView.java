@@ -45,7 +45,7 @@ public class UpdateMarksView extends javax.swing.JFrame {
         updateButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
-        viewButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,11 +73,6 @@ public class UpdateMarksView extends javax.swing.JFrame {
         updateButton.setBackground(new java.awt.Color(0, 153, 102));
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Hiragino Sans", 0, 13)); // NOI18N
         jLabel9.setText("Update the required fields");
@@ -85,11 +80,6 @@ public class UpdateMarksView extends javax.swing.JFrame {
         deleteButton.setBackground(new java.awt.Color(255, 51, 102));
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,9 +153,9 @@ public class UpdateMarksView extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        viewButton.setBackground(new java.awt.Color(0, 102, 255));
-        viewButton.setForeground(new java.awt.Color(255, 255, 255));
-        viewButton.setText("Back");
+        backButton.setBackground(new java.awt.Color(0, 102, 255));
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,7 +165,7 @@ public class UpdateMarksView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(viewButton)
+                        .addComponent(backButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -185,7 +175,7 @@ public class UpdateMarksView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(viewButton)
+                .addComponent(backButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -193,14 +183,6 @@ public class UpdateMarksView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateButtonActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +227,7 @@ public class UpdateMarksView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JTextField businessMarksTextField;
     private javax.swing.JTextField databaseMarksTextField;
     private javax.swing.JButton deleteButton;
@@ -262,7 +245,6 @@ public class UpdateMarksView extends javax.swing.JFrame {
     private javax.swing.JTextField projectMarksTextField;
     private javax.swing.JTextField studentNameTextField;
     private javax.swing.JButton updateButton;
-    private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 
 
@@ -282,13 +264,13 @@ public class UpdateMarksView extends javax.swing.JFrame {
     public javax.swing.JTextField getBusinessMarksTextField(){
         return businessMarksTextField;
     }
-    public void addMarks(ActionListener listener){
+    public void updateMarks(ActionListener listener){
         updateButton.addActionListener(listener);
     }
-    public void viewMarksNavigation(ActionListener listener){
-        viewButton.addActionListener(listener);
+    public void backNavigation(ActionListener listener){
+        backButton.addActionListener(listener);
     }
-    public void logout(ActionListener listener){
+    public void deleteMark(ActionListener listener){
         deleteButton.addActionListener(listener);
     }
 }

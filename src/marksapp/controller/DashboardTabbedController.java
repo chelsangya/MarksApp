@@ -6,6 +6,8 @@ package marksapp.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
@@ -18,6 +20,7 @@ import marksapp.model.UserData;
 import marksapp.view.DashboardTabbedView;
 import marksapp.view.DashboardView;
 import marksapp.view.LoginView;
+import marksapp.view.UpdateMarksView;
 
 /**
  *
@@ -36,6 +39,7 @@ public class DashboardTabbedController {
         this.view.logout(new LogoutUser());
         tabbedPane=this.view.getTabbedPane();
         this.view.getIndex(new ChangedTab());
+        this.view.addTableClick(new TableRowClicked());
     }
     public void open(){
         view.setVisible(true);
@@ -138,6 +142,49 @@ public class DashboardTabbedController {
         view.getMarksTable().setModel(tableModel);
     }
     
+        
+    }
+    class TableRowClicked implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+             int selectedRow = view.getMarksTable().getSelectedRow();
+            if (selectedRow != -1) {
+                // Extract data from selected row
+                int id = (int) view.getMarksTable().getValueAt(selectedRow, 0);
+                String name = (String) view.getMarksTable().getValueAt(selectedRow, 1);
+                int db = (int) view.getMarksTable().getValueAt(selectedRow, 2);
+                int oop = (int) view.getMarksTable().getValueAt(selectedRow, 3);
+                int project = (int) view.getMarksTable().getValueAt(selectedRow, 4);
+                int business = (int) view.getMarksTable().getValueAt(selectedRow, 5);
+
+                MarksData selectedMarks = new MarksData(user.getId(), name, db, oop, project, business);
+                selectedMarks.setId(id);
+
+                // Open the new view
+                UpdateMarksView detailView = new UpdateMarksView();
+                UpdateController update = new UpdateController(detailView,user,selectedMarks);
+                update.open();
+                close();
+                
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
         
     }
     class LogoutUser implements ActionListener{

@@ -56,6 +56,7 @@ public class DashboardTabbedView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         viewMarksPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
@@ -118,7 +119,7 @@ public class DashboardTabbedView extends javax.swing.JFrame {
                                 .addComponent(oopMarksTextField)
                                 .addComponent(businessMarksTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel1))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         viewMarksPanelLayout.setVerticalGroup(
             viewMarksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +176,7 @@ public class DashboardTabbedView extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 566, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(10, 10, 10)
@@ -184,7 +185,7 @@ public class DashboardTabbedView extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
+            .addGap(0, 295, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(19, 19, 19)
@@ -217,7 +218,7 @@ public class DashboardTabbedView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3)
+            .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(logoutButton))
@@ -321,6 +322,9 @@ public class DashboardTabbedView extends javax.swing.JFrame {
     }
     public javax.swing.JTable getMarksTable(){
         return marksTable;
+    }
+    public void addTableClick(MouseListener listener){
+        marksTable.addMouseListener(listener);
     }
     public void logout(ActionListener listener){
         logoutButton.addActionListener(listener);
